@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { create, all } from 'mathjs';
 
 const math = create(all);
@@ -12,7 +12,13 @@ export const MatrixInput = ({ size, onMatrixChange }: MatrixInputProps) => {
   const [matrix, setMatrix] = useState<number[][]>(
     Array(size).fill(0).map(() => Array(size).fill(0))
   );
-	console.log('matrix', matrix)
+
+  // Reset matrix when size changes
+  useEffect(() => {
+    const newMatrix = Array(size).fill(0).map(() => Array(size).fill(0));
+    setMatrix(newMatrix);
+    onMatrixChange(newMatrix);
+  }, [size]);
 
   const handleChange = (i: number, j: number, value: string) => {
     const newMatrix = matrix.map(row => [...row]);
@@ -27,19 +33,40 @@ export const MatrixInput = ({ size, onMatrixChange }: MatrixInputProps) => {
   };
 
   return (
-    <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }}>
-      {matrix.map((row, i) =>
-        row.map((val, j) => (
-          <input
-            key={`${i}-${j}`}
-            type="number"
-            value={val}
-            onChange={(e) => handleChange(i, j, e.target.value)}
-            className="w-full p-2 border rounded bg-background-primary text-content-primary text-center"
-          />
-        ))
-      )}
+    <div className="space-y-4">
+      <div 
+        className="grid gap-2" 
+        style={{ gridTemplateColumns: `repeat(${size}, minmax(0, 1fr))` }}
+      >
+        {matrix.map((row, i) =>
+          row.map((val, j) => (
+            <input
+              key={`${i}-${j}`}
+              type="number"
+              value={val || ''}
+              onChange={(e) => handleChange(i, j, e.target.value)}
+              className="w-full p-2 border rounded bg-background-primary text-content-primary text-center"
+              placeholder="0"
+              step="0.1"
+            />
+          ))
+        )}
+      </div>
+      
+      {/* Matrix Preview */}
+      <div className="p-4 bg-background-secondary rounded-lg">
+        <div className="font-mono whitespace-pre text-center">
+          {matrix.map((row, i) => (
+            <div key={i}>
+              {i === 0 ? '⎡' : i === size - 1 ? '⎣' : '⎢'}
+              {row.map((val, j) => (
+                <span key={j} className="mx-2">{val.toFixed(1)}</span>
+              ))}
+              {i === 0 ? '⎤' : i === size - 1 ? '⎦' : '⎥'}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };
-

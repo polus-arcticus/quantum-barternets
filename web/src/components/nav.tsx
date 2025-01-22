@@ -29,6 +29,7 @@ export const Nav = () => (
           <NavLink to="/">Home</NavLink>
           <NavLink to="/basics">Basics</NavLink>
           <NavLink to="/sdp">SDP</NavLink>
+          <NavLink to="/maxcut">Max-Cut</NavLink>
         </div>
       </div>
     </div>

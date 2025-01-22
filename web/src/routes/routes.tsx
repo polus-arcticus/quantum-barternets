@@ -3,10 +3,10 @@ import { Root } from './root';
 import { loader as basicsLoader } from '@/routes/basics/loader';
 
 export const router = createBrowserRouter([
-	{
-		path: '/',
-		element: <Root />,
-		children: [
+  {
+    path: '/',
+    element: <Root />,
+    children: [
       {
         path: 'sdp',
         lazy: async () => {
@@ -14,21 +14,30 @@ export const router = createBrowserRouter([
           return { Component: SDPPage };
         },
       },
-			{
-				index: true,
-				lazy: async () => {
-					const { HomePage } = await import('@/routes/home/page');
-					return { Component: HomePage };
-				},
-			},
-			{
-				path: 'basics',
-				loader: basicsLoader,
-				lazy: async () => {
-					const { BasicsPage } = await import('@/routes/basics/page');
-					return { Component: BasicsPage };
-				},
-			}
-		]
-	}
+      {
+        path: 'maxcut',
+        lazy: async () => {
+          const { MaxCutPage  } = await import('@/routes/maxcut/page');
+          return { Component: MaxCutPage  };
+
+        },
+
+      },
+      {
+        index: true,
+        lazy: async () => {
+          const { HomePage } = await import('@/routes/home/page');
+          return { Component: HomePage };
+        },
+      },
+      {
+        path: 'basics',
+        loader: basicsLoader,
+        lazy: async () => {
+          const { BasicsPage } = await import('@/routes/basics/page');
+          return { Component: BasicsPage };
+        },
+      }
+    ]
+  }
 ]);

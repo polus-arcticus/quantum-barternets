@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { create, all } from 'mathjs';
 import { MatrixInput } from '@/components/MatrixInput';
-
+import SDPCone from '@/components/SDPCone';
 import { Scene } from '@/components/Scene';
 import { StateArrow, StateLabel } from '@/components/GraphUtils/GraphUtils';
 const math = create(all);
@@ -99,6 +99,13 @@ export const SDPPage = () => {
                 }
               </group>
             </Scene>
+          </div>
+          <div className="space-y-4">
+            <SDPCone
+              eigenvalues={eigenvalues}
+              eigenVectors={eigenVectors}
+              isPositiveSemidefinite={isPositiveSemidefinite}
+            />
           </div>
           <div className="space-y-4">
             <div className="bg-background-secondary rounded-lg p-6 shadow-lg">
