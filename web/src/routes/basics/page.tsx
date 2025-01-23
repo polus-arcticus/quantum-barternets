@@ -14,15 +14,13 @@ export const BasicsPage = () => {
 	return (
 		<div className="min-h-screen bg-background-primary text-content-primary">
 			<div className="container mx-auto p-4">
-				<div className="flex flex-col lg:flex-row gap-4">
-					<div className="lg:w-1/3 space-y-4">
-						<h1 className="text-3xl font-bold text-quantum-bra">
-							Quantum State Visualizer
-						</h1>
-						<MathDisplay />
-					</div>
+				<h1 className="text-3xl font-bold text-quantum-bra mb-6">
+					Quantum State Visualizer
+				</h1>
 
-					<div className="lg:w-2/3 h-128 bg-background-tertiary rounded-lg shadow-lg overflow-hidden">
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+					{/* Quantum Scene - Centered in the grid */}
+					<div className="lg:col-span-8 lg:col-start-3 h-96 lg:h-128 bg-background-tertiary rounded-lg shadow-lg overflow-hidden mb-6">
 						<Canvas>
 							<Suspense fallback={null}>
 								{showPerf && <Perf position="top-left" />}
@@ -30,6 +28,11 @@ export const BasicsPage = () => {
 								<OrbitControls />
 							</Suspense>
 						</Canvas>
+					</div>
+
+					{/* Math Display - Wrapping sections */}
+					<div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+						<MathDisplay />
 					</div>
 				</div>
 			</div>

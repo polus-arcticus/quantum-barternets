@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { TwoVertexExample } from './TwoVertexExample';
-import { ThreeVertexExample } from './ThreeVertexExample';
+import { ThreeVertexExample } from './ThreeVertex/ThreeVertexExample';
 
 export const ExampleWrapper = () => {
   const [currentExample, setCurrentExample] = useState(0);
