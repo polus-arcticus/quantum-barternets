@@ -2,8 +2,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Perf } from 'r3f-perf';
 import { useControls } from 'leva';
-import { QuantumScene } from '../../components/QuantumScene';
-import { MathDisplay } from '../../components/MathDisplay';
+import { QuantumScene } from '@/components/QuantumScene';
+import { MathDisplay } from '@/components/MathDisplay';
 import { Suspense } from 'react';
 
 export const BasicsPage = () => {
