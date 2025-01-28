@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
 		label: 'Economic Theory',
 		dropdownItems: [
 			{ path: '/economic-theory/why-barter', label: 'The Case For Barter' },
+			{ path: '/economic-theory/complexity-analysis', label: 'Complexity Analysis' },
 		]
 	},
 	{

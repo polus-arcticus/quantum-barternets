@@ -27,6 +27,13 @@ export const router = createBrowserRouter([
               const { WhyBarterPage } = await import('@/routes/economic-theory/why-barter/page');
               return { Component: WhyBarterPage };
             },
+          },
+          {
+            path: 'complexity-analysis',
+            lazy: async () => {
+              const { ComplexityAnalysisPage } = await import('@/routes/economic-theory/complexity-analysis/page');
+              return { Component: ComplexityAnalysisPage };
+            },
           }
 				]
       },
